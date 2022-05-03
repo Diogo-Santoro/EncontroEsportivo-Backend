@@ -5,7 +5,6 @@ import com.fiec.EncontroEsportivo.business.models.dto.FirebaseAuthRequest;
 import com.fiec.EncontroEsportivo.business.models.dto.GoogleAuthRequest;
 import com.fiec.EncontroEsportivo.business.models.dto.TokenResponse;
 import com.fiec.EncontroEsportivo.business.models.entities.User;
-
 import com.fiec.EncontroEsportivo.business.models.repositories.IUserRepositorio;
 import com.fiec.EncontroEsportivo.business.models.services.IFirebaseService;
 import com.fiec.EncontroEsportivo.business.models.services.JwtUserDetailsService;
@@ -29,13 +28,14 @@ import java.util.Collections;
 @RequestMapping("/auth")
 public class AuthController {
 
-
     @Autowired
     IFirebaseService firebaseService;
+
     @Autowired
     JwtTokenUtil jwtTokenUtil;
     @Autowired
     JwtUserDetailsService jwtUserDetailsService;
+
     @Autowired
     IUserRepositorio userRepositorio;
 
@@ -47,6 +47,7 @@ public class AuthController {
         user.setEmail(email);
         userRepositorio.save(user);
     }
+
     @PostMapping("/login")
     public TokenResponse autenticaUsuarioFirebase(@RequestBody FirebaseAuthRequest firebaseAuthRequest) throws Exception {
         firebaseService.login(firebaseAuthRequest);
@@ -55,11 +56,12 @@ public class AuthController {
         return new TokenResponse(token);
 
     }
+
     @PostMapping("/loginWithGoogle")
     public TokenResponse autenticaUsuariocomGoogle(@RequestBody GoogleAuthRequest googleAuthRequest) throws Exception {
         HttpTransport httpTransport = new NetHttpTransport();
         JsonFactory jsonFactory = new GsonFactory();
-        String clientId = "454534529246-d3288uo9sp4nc92vq192lkg5cgdtlroq.apps.googleusercontent.com";
+        String clientId = "277380091468-1pe2je91eas7almtof0bf0bfhmehbvgi.apps.googleusercontent.com";
 
         GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(httpTransport, jsonFactory)
                 .setAudience(Collections.singletonList(clientId))
@@ -83,4 +85,3 @@ public class AuthController {
 
     }
 }
-
