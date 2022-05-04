@@ -24,7 +24,7 @@ public class Proprietario implements Serializable {
     @Column(unique = true)
     private String idProprietario;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "idLugar")
     private Lugar lugar;
 

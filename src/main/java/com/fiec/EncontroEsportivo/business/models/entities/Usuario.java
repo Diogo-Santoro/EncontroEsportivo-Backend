@@ -34,6 +34,6 @@ public class Usuario implements Serializable {
     private String profileImage;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id, nullable = false")
+    @JoinColumn(name = "idUser", nullable = false)
     private User user;
 }

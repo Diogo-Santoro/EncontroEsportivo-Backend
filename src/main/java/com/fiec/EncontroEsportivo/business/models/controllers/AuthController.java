@@ -45,7 +45,7 @@ public class AuthController {
         String email = firebaseAuthRequest.getEmail();
         User user = new User();
         user.setEmail(email);
-        userRepositorio.save(user);
+        userRepositorio.save(user); 
     }
 
     @PostMapping("/login")
@@ -61,7 +61,7 @@ public class AuthController {
     public TokenResponse autenticaUsuariocomGoogle(@RequestBody GoogleAuthRequest googleAuthRequest) throws Exception {
         HttpTransport httpTransport = new NetHttpTransport();
         JsonFactory jsonFactory = new GsonFactory();
-        String clientId = "277380091468-1pe2je91eas7almtof0bf0bfhmehbvgi.apps.googleusercontent.com";
+        String clientId = "454534529246-d3288uo9sp4nc92vq192lkg5cgdtlroq.apps.googleusercontent.com";
 
         GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(httpTransport, jsonFactory)
                 .setAudience(Collections.singletonList(clientId))

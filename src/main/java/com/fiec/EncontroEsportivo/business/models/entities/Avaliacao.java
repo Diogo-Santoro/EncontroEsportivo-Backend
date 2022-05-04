@@ -27,7 +27,7 @@ public class Avaliacao implements Serializable {
     @JoinColumn(name = "Usuario", referencedColumnName = "idUsuario")
     private String idUsuario;*/
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name= "idUsuario")
     private Usuario usuario;
 

@@ -29,10 +29,6 @@ public class EsporteController {
         return esporteService.pegaEsporte(id_esporte);
     }
 
-    @PutMapping("/{id_esporte}")
-    public void atualizaEsporte(@PathVariable("id_esporte") String id_esporte, @RequestBody Esporte esporte) {
-        esporteService.atualizaEsporte(esporte, id_esporte);
-    }
 
     @DeleteMapping("/{id_lugar}")
     public void deletaEsporte(@PathVariable("id_esporte") String id_esporte) {

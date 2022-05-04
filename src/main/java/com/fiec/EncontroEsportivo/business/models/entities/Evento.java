@@ -34,7 +34,7 @@ import java.io.Serializable;
     /*@Column(unique=true)
     @JoinColumn(name = "Usuario", referencedColumnName = "idUsuario")
     private String idUsuario;*/
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "idUsuario")
     private Usuario usuario;
 
@@ -45,4 +45,13 @@ import java.io.Serializable;
     @OneToOne
     @JoinColumn(name= "idEsporte")
     private Esporte esporte;
+
+    private String nomeEvento;
+    private String dataHoraInicio;
+    private String dataHoraFim;
+    private String participantes;
+
+
+
+
 }

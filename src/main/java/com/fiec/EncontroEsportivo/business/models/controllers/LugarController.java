@@ -24,20 +24,20 @@ public class LugarController {
         lugarService.saveLugar(lugar);
     }
 
-    @GetMapping("/{id_lugar}")
-    public Lugar pegaLugar(@PathVariable("id_lugar") String id_lugar) {
+    @GetMapping("/{idLugar}")
+    public Lugar pegaLugar(@PathVariable("idLugar") String idLugar) {
 
-        return lugarService.pegaLugar(id_lugar);
+        return lugarService.pegaLugar(idLugar);
     }
 
-    @PutMapping("/{id_lugar}")
-    public void atualizaLugar(@PathVariable("id_lugar") String id_lugar, @RequestBody Lugar lugar) {
-        lugarService.atualizaLugar(lugar, id_lugar);
+    @PutMapping("/{idLugar}")
+    public void atualizaLugar(@PathVariable("idLugar") String idLugar, @RequestBody Lugar lugar) {
+        lugarService.atualizaLugar(lugar, idLugar);
     }
 
-    @DeleteMapping("/{id_lugar}")
-    public void deletaLugar(@PathVariable("id_lugar") String id_lugar) {
-        lugarService.deletaLugar(id_lugar);
+    @DeleteMapping("/{idLugar}")
+    public void deletaLugar(@PathVariable("idLugar") String idLugar) {
+        lugarService.deletaLugar(idLugar);
     }
 
 }

@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface IAvaliacaoRepositorio extends JpaRepository<Avaliacao, String> {
-    List<Avaliacao> findByNotaAndId(String nota, String id_avaliacao);
+    List<Avaliacao> findByIdAvaliacao(String idAvaliacao);
 }
