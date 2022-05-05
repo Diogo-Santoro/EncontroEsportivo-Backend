@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface IUsuarioRepositorio extends JpaRepository<Usuario, String> {
 
-    List<Usuario> findByidUsuario( String idUsuario);
+
 }

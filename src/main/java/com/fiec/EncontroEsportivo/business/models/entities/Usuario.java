@@ -34,6 +34,21 @@ public class Usuario implements Serializable {
     private String profileImage;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idUser", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 }
+
+/*
+{
+        "nome": "diogo",
+        "email": "diogo@gmail.com",
+        "senha": "12345678",
+        "rua": "Rua Laurinha Bunita",
+        "telefone": "4002-8922",
+        "bairro": "Jardim n sei",
+        "nomeUsuario": "didizinho",
+        "cep": "13344450",
+        "esporteFav": "natação",
+        "profileImage": ""
+
+        }*/

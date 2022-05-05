@@ -58,11 +58,11 @@ public class UsuarioController {
         Usuario novoUsuario = objectMapper.readValue(usuario, Usuario.class);
 
         String profileImage = UUID.randomUUID() + "_" + Long.toHexString(new Date().getTime());
-        novoUsuario.setProfileImage(profileImage + ".jpg");
+        novoUsuario.getUser().setProfileImage(profileImage + ".jpg");
         usuarioService.saveUsuario(novoUsuario);
-        Path filename = Paths.get("uploads").resolve(profileImage);
+        Path filename = Paths.get("com/fiec/EncontroEsportivo/uploads").resolve(profileImage);
 
-        Path thumbFilename = Paths.get("uploads").resolve("thumb_" + profileImage);
+        Path thumbFilename = Paths.get("com/fiec/EncontroEsportivo/uploads").resolve("thumb_" + profileImage);
         Thumbnails.of(file.getInputStream())
                 .size(500, 500)
                 .outputFormat("jpg")

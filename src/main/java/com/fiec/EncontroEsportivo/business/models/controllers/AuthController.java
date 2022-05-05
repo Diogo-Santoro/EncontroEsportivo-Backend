@@ -45,7 +45,7 @@ public class AuthController {
         String email = firebaseAuthRequest.getEmail();
         User user = new User();
         user.setEmail(email);
-        userRepositorio.save(user); 
+        userRepositorio.save(user);
     }
 
     @PostMapping("/login")

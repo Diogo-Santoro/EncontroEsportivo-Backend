@@ -15,11 +15,12 @@ import java.io.IOException;
 @RequestMapping("/images")
 public class ImageController {
 
+    private final String FILE_PATH_ROOT = "uploads/";
     @GetMapping("/{filename}")
     public ResponseEntity<byte[]> getImage(@PathVariable("filename") String filename){
         byte[] image = new byte[0];
         try{
-            String FILE_PATH_ROOT = "uploads/";
+
             image = FileUtils.readFileToByteArray(new File(FILE_PATH_ROOT + filename));
         } catch (IOException e) {
             e.printStackTrace();
