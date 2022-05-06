@@ -2,27 +2,17 @@ package com.fiec.EncontroEsportivo.business.models.controllers;
 
 import com.fiec.EncontroEsportivo.business.models.Utils.JwtTokenUtil;
 import com.fiec.EncontroEsportivo.business.models.dto.FirebaseAuthRequest;
-import com.fiec.EncontroEsportivo.business.models.dto.GoogleAuthRequest;
 import com.fiec.EncontroEsportivo.business.models.dto.TokenResponse;
 import com.fiec.EncontroEsportivo.business.models.entities.User;
 import com.fiec.EncontroEsportivo.business.models.repositories.IUserRepositorio;
 import com.fiec.EncontroEsportivo.business.models.services.IFirebaseService;
 import com.fiec.EncontroEsportivo.business.models.services.JwtUserDetailsService;
-import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
-import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
-import com.google.api.client.http.HttpTransport;
-import com.google.api.client.http.javanet.NetHttpTransport;
-import com.google.api.client.json.JsonFactory;
-import com.google.api.client.json.gson.GsonFactory;
-import org.apache.http.HttpException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Collections;
 
 @RestController
 @RequestMapping("/auth")
@@ -57,31 +47,4 @@ public class AuthController {
 
     }
 
-    @PostMapping("/loginWithGoogle")
-    public TokenResponse autenticaUsuariocomGoogle(@RequestBody GoogleAuthRequest googleAuthRequest) throws Exception {
-        HttpTransport httpTransport = new NetHttpTransport();
-        JsonFactory jsonFactory = new GsonFactory();
-        String clientId = "454534529246-d3288uo9sp4nc92vq192lkg5cgdtlroq.apps.googleusercontent.com";
-
-        GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(httpTransport, jsonFactory)
-                .setAudience(Collections.singletonList(clientId))
-                .build();
-        GoogleIdToken idToken = verifier.verify(googleAuthRequest.getGoogleToken());
-        if(idToken != null){
-            GoogleIdToken.Payload payload = idToken.getPayload();
-
-            String userId = payload.getSubject();
-            System.out.println("User ID: " + userId);
-
-            String email = payload.getEmail();
-            String name = (String) payload.get("name");
-            String pictureUrl = (String) payload.get("picture");
-
-            UserDetails userDetails = jwtUserDetailsService.loadUserByUsername(email);
-            String token = jwtTokenUtil.generateToken(userDetails);
-            return new TokenResponse(token);
-        }
-        throw new HttpException();
-
-    }
 }
