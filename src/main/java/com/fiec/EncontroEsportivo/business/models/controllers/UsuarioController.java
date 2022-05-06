@@ -1,11 +1,17 @@
 package com.fiec.EncontroEsportivo.business.models.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import com.fiec.EncontroEsportivo.business.models.dto.RequisicaoUsuario;
+import com.fiec.EncontroEsportivo.business.models.entities.User;
 import com.fiec.EncontroEsportivo.business.models.entities.Usuario;
+import com.fiec.EncontroEsportivo.business.models.repositories.IUserRepositorio;
 import com.fiec.EncontroEsportivo.business.models.services.IUsuarioService;
 import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,6 +22,7 @@ import java.nio.file.Paths;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/usuario")
@@ -24,45 +31,49 @@ public class UsuarioController {
     @Autowired
     IUsuarioService usuarioService;
 
-    @GetMapping
-    public List<Usuario> getUsuario() {
-        return usuarioService.getUsuario();
-    }
+    @Autowired
+    IUserRepositorio userRepositorio;
+
+
 
     @PostMapping
-    public void saveUsuario(@RequestBody Usuario usuario) {
+    public void saveUsuario(@RequestBody Usuario usuario){
         usuarioService.saveUsuario(usuario);
     }
 
     @GetMapping("/{idUsuario}")
-    public Usuario pegaUsuario(@PathVariable("idUsuario") String idUsuario) {
+    public Usuario pegaUsuario(@PathVariable("idUsuario") String idUsuario){
 
         return usuarioService.pegaUsuario(idUsuario);
     }
 
     @PutMapping("/{idUsuario}")
-    public void atualizaUsuario(@PathVariable("idUsuario") String idUsuario, @RequestBody Usuario usuario) {
+    public void atualizaUsuario(@PathVariable("idUsuario") String idUsuario, @RequestBody Usuario usuario){
         usuarioService.atualizaUsuario(usuario, idUsuario);
     }
 
     @DeleteMapping("/{idUsuario}")
-    public void deletaUsuario(@PathVariable("idUsuario") String idUsuario) {
+    public void deletaUsuario(@PathVariable("idUsuario") String idUsuario){
         usuarioService.deletaUsuario(idUsuario);
-
-
     }
 
-    @PostMapping(value = "/comFoto", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value = "/comFoto",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public void saveUsuarioComFoto(@RequestParam("usuario") String usuario, @RequestParam("foto") MultipartFile file) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        Usuario novoUsuario = objectMapper.readValue(usuario, Usuario.class);
-
+        RequisicaoUsuario requisicaoUsuario = objectMapper.readValue(usuario, RequisicaoUsuario.class);
+        Usuario novoUsuario = new Usuario();
+        novoUsuario.setEmail(requisicaoUsuario.getEmail());
+        novoUsuario.setPassword(requisicaoUsuario.getPassword());
+        User user = userRepositorio.findByEmail(requisicaoUsuario.getEmail()).orElse(null);
+        user.setNome(requisicaoUsuario.getNome());
+        novoUsuario.setUser(user);
         String profileImage = UUID.randomUUID() + "_" + Long.toHexString(new Date().getTime());
         novoUsuario.getUser().setProfileImage(profileImage + ".jpg");
         usuarioService.saveUsuario(novoUsuario);
-        Path filename = Paths.get("com/fiec/EncontroEsportivo/uploads").resolve(profileImage);
 
-        Path thumbFilename = Paths.get("com/fiec/EncontroEsportivo/uploads").resolve("thumb_" + profileImage);
+        Path filename = Paths.get("uploads").resolve(profileImage);
+
+        Path thumbFilename = Paths.get("uploads").resolve("thumb_" + profileImage);
         Thumbnails.of(file.getInputStream())
                 .size(500, 500)
                 .outputFormat("jpg")
@@ -72,6 +83,10 @@ public class UsuarioController {
                 .outputFormat("jpg")
                 .toFile(new File(thumbFilename.toString()));
 
+
     }
+
+
+
 
 }

@@ -1,4 +1,5 @@
 package com.fiec.EncontroEsportivo.business.models.entities;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,7 +23,6 @@ public class User implements UserDetails {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @ToString.Exclude
     private String userId;
-
 
     @Column(unique = true)
     private String email;

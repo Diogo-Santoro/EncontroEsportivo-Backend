@@ -24,7 +24,7 @@ public class Usuario implements Serializable {
 
     private String nome;
     private String email;
-    private String senha;
+    private String password;
     private String rua;
     private String telefone;
     private String bairro;
@@ -34,7 +34,7 @@ public class Usuario implements Serializable {
     private String profileImage;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "userId", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 }
 
@@ -42,13 +42,6 @@ public class Usuario implements Serializable {
 {
         "nome": "diogo",
         "email": "diogo@gmail.com",
-        "senha": "12345678",
-        "rua": "Rua Laurinha Bunita",
-        "telefone": "4002-8922",
-        "bairro": "Jardim n sei",
-        "nomeUsuario": "didizinho",
-        "cep": "13344450",
-        "esporteFav": "natação",
-        "profileImage": ""
+        "password: "didipixocho@gmail.com"
 
         }*/

@@ -1,11 +1,13 @@
 package com.fiec.EncontroEsportivo.business.models.controllers;
 
+
 import com.fiec.EncontroEsportivo.business.models.Utils.JwtTokenUtil;
 import com.fiec.EncontroEsportivo.business.models.dto.FirebaseAuthRequest;
 import com.fiec.EncontroEsportivo.business.models.dto.TokenResponse;
 import com.fiec.EncontroEsportivo.business.models.entities.User;
 import com.fiec.EncontroEsportivo.business.models.repositories.IUserRepositorio;
 import com.fiec.EncontroEsportivo.business.models.services.IFirebaseService;
+
 import com.fiec.EncontroEsportivo.business.models.services.JwtUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 
 @RestController
 @RequestMapping("/auth")
@@ -46,5 +49,4 @@ public class AuthController {
         return new TokenResponse(token);
 
     }
-
 }

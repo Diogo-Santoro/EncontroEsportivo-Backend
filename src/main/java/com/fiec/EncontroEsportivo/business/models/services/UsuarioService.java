@@ -1,7 +1,7 @@
 package com.fiec.EncontroEsportivo.business.models.services;
 
-import com.fiec.EncontroEsportivo.business.models.repositories.IUsuarioRepositorio;
 import com.fiec.EncontroEsportivo.business.models.entities.Usuario;
+import com.fiec.EncontroEsportivo.business.models.repositories.IUsuarioRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,9 +30,9 @@ public class UsuarioService implements IUsuarioService {
     public void atualizaUsuario(Usuario usuario, String idUsuario) {
 
 
-        Usuario usuarioAnterior = usuarioRepositorio.findById(idUsuario).orElseThrow();
+        Usuario usuarioAnterior = usuarioRepositorio.findById(idUsuario).orElse(null);
         usuarioAnterior.setNome(usuario.getNome());
-        usuarioAnterior.setSenha(usuario.getSenha());
+        usuarioAnterior.setPassword(usuario.getPassword());
         usuarioAnterior.setEmail(usuario.getEmail());
         usuarioAnterior.setRua(usuario.getRua());
         usuarioAnterior.setNomeUsuario(usuario.getNomeUsuario());
