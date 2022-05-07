@@ -1,5 +1,6 @@
 package com.fiec.EncontroEsportivo.business.models.entities;
 
+import com.google.firebase.database.annotations.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,12 +28,17 @@ public class User implements UserDetails {
     @Column(unique = true)
     private String email;
 
-    private String nome;
-
-    private String profileImage;
-
+    @ToString.Exclude
     private String fcmToken;
 
+    private String nome;
+    private String password;
+    private String rua;
+    private String bairro;
+    private String nomeUsuario;
+    private String cep;
+    private String esporteFav;
+    private String profileImage;
 
 
     @Override

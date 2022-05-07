@@ -10,9 +10,8 @@ import lombok.Data;
 public class UsuarioResponse {
     String nome;
     String email;
-    String senha;
+    String password;
     String rua;
-    String telefone;
     String bairro;
     String nomeUsuario;
     String cep;

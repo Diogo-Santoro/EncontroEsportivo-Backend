@@ -37,7 +37,6 @@ public class UsuarioService implements IUsuarioService {
         usuarioAnterior.setRua(usuario.getRua());
         usuarioAnterior.setNomeUsuario(usuario.getNomeUsuario());
         usuarioAnterior.setBairro(usuario.getBairro());
-        usuarioAnterior.setTelefone(usuario.getTelefone());
         usuarioAnterior.setCep(usuario.getCep());
         usuarioAnterior.setProfileImage(usuario.getProfileImage());
         usuarioAnterior.setEsporteFav(usuario.getEsporteFav());

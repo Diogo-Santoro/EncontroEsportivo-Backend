@@ -11,10 +11,7 @@ import com.fiec.EncontroEsportivo.business.models.services.IFirebaseService;
 import com.fiec.EncontroEsportivo.business.models.services.JwtUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -36,8 +33,10 @@ public class AuthController {
     public void registraUsuarioFirebase(@RequestBody FirebaseAuthRequest firebaseAuthRequest) throws Exception {
         firebaseService.register(firebaseAuthRequest);
         String email = firebaseAuthRequest.getEmail();
+        String password = firebaseAuthRequest.getPassword();
         User user = new User();
         user.setEmail(email);
+        user.setPassword(password);
         userRepositorio.save(user);
     }
 
