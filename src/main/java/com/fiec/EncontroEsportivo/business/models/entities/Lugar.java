@@ -42,9 +42,7 @@ public class Lugar implements Serializable {
     @NotNull
     private Date disponibilidade;
     @NotNull
-    private String lat;
-    @NotNull
-    private String lng;
+    private String coord;
 
 
 

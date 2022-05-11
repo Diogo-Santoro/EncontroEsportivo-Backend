@@ -57,15 +57,15 @@ public class UsuarioController {
         usuarioService.deletaUsuario(idUsuario);
     }
 
+
     @PostMapping(value = "/comFoto",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public void saveUsuarioComFoto(@RequestParam("usuario") String usuario, @RequestParam("foto") MultipartFile file) throws IOException {
+    public void saveUsuariocomFoto(@RequestParam("usuario") String usuario, @RequestParam("foto") MultipartFile file) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         RequisicaoUsuario requisicaoUsuario = objectMapper.readValue(usuario, RequisicaoUsuario.class);
         Usuario novoUsuario = new Usuario();
+        User user = userRepositorio.findByEmail(requisicaoUsuario.getEmail()).orElse(null);
         novoUsuario.setEmail(requisicaoUsuario.getEmail());
         novoUsuario.setPassword(requisicaoUsuario.getPassword());
-        User user = userRepositorio.findByEmail(requisicaoUsuario.getEmail()).orElse(null);
-        user.setNome(requisicaoUsuario.getNome());
         novoUsuario.setUser(user);
         String profileImage = UUID.randomUUID() + "_" + Long.toHexString(new Date().getTime());
         novoUsuario.getUser().setProfileImage(profileImage + ".jpg");
@@ -85,8 +85,6 @@ public class UsuarioController {
 
 
     }
-
-
 
 
 }
