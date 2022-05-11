@@ -34,7 +34,6 @@ public class LugarService implements ILugarService{
 
         Lugar lugarAnterior = lugarRepositorio.findById(idLugar).orElseThrow();
         lugarAnterior.setNomeLugar(lugar.getNomeLugar());
-        lugarAnterior.setEsporteDisp(lugar.getEsporteDisp());
         lugarAnterior.setDescricao(lugar.getDescricao());
         lugarAnterior.setValor(lugar.getValor());
         lugarAnterior.setRua(lugar.getRua());

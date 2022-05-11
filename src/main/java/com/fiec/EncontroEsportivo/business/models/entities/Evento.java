@@ -1,5 +1,6 @@
 package com.fiec.EncontroEsportivo.business.models.entities;
 
+import com.google.firebase.database.annotations.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,6 +9,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
   @Table(name = "evento")
@@ -16,40 +18,36 @@ import java.io.Serializable;
   @AllArgsConstructor
  public class Evento implements Serializable {
     @Id
-    @GeneratedValue (generator = "uuid")
+    @GeneratedValue (generator = "uuid", strategy= GenerationType.AUTO)
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @ToString.Exclude
+    @NotNull
     @Column(unique = true)
     private String idEvento;
 
 
-    /*@Column(unique = true)
-    @JoinColumn(name = "Lugar", referencedColumnName = "idUugar")
-    private String idLugar;*/
+
     @OneToOne
     @JoinColumn(name= "idLugar")
     private Lugar lugar;
 
 
-    /*@Column(unique=true)
-    @JoinColumn(name = "Usuario", referencedColumnName = "idUsuario")
-    private String idUsuario;*/
+
     @ManyToOne
     @JoinColumn(name = "idUsuario")
     private Usuario usuario;
 
 
-    /*@Column(unique = true)
-    @JoinColumn(name = "Esporte", referencedColumnName = "idEsporte")
-    private String idEsporte;*/
-    @OneToOne
-    @JoinColumn(name= "idEsporte")
-    private Esporte esporte;
 
+    @NotNull
     private String nomeEvento;
-    private String dataHoraInicio;
-    private String dataHoraFim;
+    @NotNull
+    private Date dataHoraInicio;
+    @NotNull
+    private Date dataHoraFim;
     private String participantes;
+
+
 
 
 

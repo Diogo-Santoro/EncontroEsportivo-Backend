@@ -1,5 +1,6 @@
 package com.fiec.EncontroEsportivo.business.models.entities;
 
+import com.google.firebase.database.annotations.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,27 +22,27 @@ public class Usuario implements Serializable {
     @Column(unique = true)
     private String idUsuario;
 
-
+    @NotNull
     private String nome;
+    @NotNull
     private String email;
+    @NotNull
     private String password;
+    @NotNull
     private String rua;
-
+    @NotNull
     private String bairro;
+    @NotNull
     private String nomeUsuario;
+    @NotNull
     private String cep;
+    @NotNull
     private String esporteFav;
+
     private String profileImage;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "id_user", nullable = false)
     private User user;
 }
 
-/*
-{
-        "nome": "diogo",
-        "email": "diogo@gmail.com",
-        "password: "didipixocho@gmail.com"
-
-        }*/

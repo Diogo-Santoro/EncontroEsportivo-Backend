@@ -1,6 +1,7 @@
 
 package com.fiec.EncontroEsportivo.business.models.entities;
 
+import com.google.firebase.database.annotations.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,24 +22,27 @@ public class Proprietario implements Serializable {
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @ToString.Exclude
+    @NotNull
     @Column(unique = true)
     private String idProprietario;
 
     @ManyToOne
-    @JoinColumn(name = "idLugar")
+    @JoinColumn(name = "id_lugar")
     private Lugar lugar;
 
-    /*@Column(unique = true)
-    @JoinColumn(name = "Lugar", referencedColumnName = "idLugar")
-    private String idLugar;*/
 
 
 
     @Column(unique = true)
+    @NotNull
     private String nome;
+    @NotNull
     private String email;
+    @NotNull
     private String senha;
+    @NotNull
     private String telefone;
+    @NotNull
     private String cnpj;
 }
 

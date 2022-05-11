@@ -23,7 +23,7 @@ public class User implements UserDetails {
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @ToString.Exclude
-    private String userId;
+    private String idUser;
 
     @Column(unique = true)
     private String email;
@@ -33,11 +33,6 @@ public class User implements UserDetails {
 
     private String nome;
     private String password;
-    private String rua;
-    private String bairro;
-    private String nomeUsuario;
-    private String cep;
-    private String esporteFav;
     private String profileImage;
 
 
@@ -55,6 +50,7 @@ public class User implements UserDetails {
     public String getUsername() {
         return email;
     }
+
 
     @Override
     public boolean isAccountNonExpired() {

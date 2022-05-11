@@ -1,5 +1,6 @@
 package com.fiec.EncontroEsportivo.business.models.entities;
 
+import com.google.firebase.database.annotations.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,6 +9,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Table(name = "lugar")
@@ -23,14 +25,27 @@ public class Lugar implements Serializable {
     private String idLugar;
     @Column(unique = true)
 
-
+    @NotNull
     private String nomeLugar;
-    private String esporteDisp;
+
     private String descricao;
+
     private float valor;
+    @NotNull
     private String rua;
+    @NotNull
     private int CEP;
+    @NotNull
     private String bairro;
+    @NotNull
     private int numero;
-    private String disponibilidade;
+    @NotNull
+    private Date disponibilidade;
+    @NotNull
+    private String lat;
+    @NotNull
+    private String lng;
+
+
+
 }
