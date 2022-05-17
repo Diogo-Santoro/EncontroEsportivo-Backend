@@ -1,6 +1,8 @@
 package com.fiec.EncontroEsportivo.business.models.services;
 
 import com.fiec.EncontroEsportivo.business.models.dto.FirebaseAuthRequest;
+import com.fiec.EncontroEsportivo.business.models.dto.LoginRequest;
+import com.fiec.EncontroEsportivo.business.models.dto.RegisterRequest;
 import com.fiec.EncontroEsportivo.business.models.dto.FirebaseAuthResponse;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -17,9 +19,15 @@ public class FirebaseService implements IFirebaseService {
             "?key=" +  WEBKEY;
     private String registerUrl = "https://identitytoolkit.googleapis.com/v1/accounts:signUp" +
             "?key=" + WEBKEY ;
+
     @Override
-    public void register(FirebaseAuthRequest firebaseAuthRequest) throws Exception {
+    public void register(String email, String password) throws Exception {
         RestTemplate restTemplate = new RestTemplate();
+        FirebaseAuthRequest firebaseAuthRequest = FirebaseAuthRequest.builder()
+                .email(email)
+                .password(password)
+                .returnSecureToken(true)
+                .build();
         HttpEntity<FirebaseAuthRequest> httpEntity = new HttpEntity<>(firebaseAuthRequest);
         System.out.println(registerUrl);
         ResponseEntity<FirebaseAuthResponse> response =
@@ -32,8 +40,13 @@ public class FirebaseService implements IFirebaseService {
     }
 
     @Override
-    public void login(FirebaseAuthRequest firebaseAuthRequest) throws Exception {
+    public void login(String email, String password) throws Exception {
         RestTemplate restTemplate = new RestTemplate();
+        FirebaseAuthRequest firebaseAuthRequest = FirebaseAuthRequest.builder()
+                .email(email)
+                .password(password)
+                .returnSecureToken(true)
+                .build();
         HttpEntity<FirebaseAuthRequest> httpEntity = new HttpEntity<>(firebaseAuthRequest);
         ResponseEntity<FirebaseAuthResponse> response =
                 restTemplate.exchange(loginUrl, HttpMethod.POST, httpEntity, FirebaseAuthResponse.class);
@@ -44,4 +57,6 @@ public class FirebaseService implements IFirebaseService {
         UsernamePasswordAuthenticationToken t = new UsernamePasswordAuthenticationToken(response.getBody().getEmail(), response.getBody().getIdToken());
         SecurityContextHolder.getContext().setAuthentication(t);
     }
+
+
 }

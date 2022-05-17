@@ -5,8 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class FirebaseAuthRequest {
+public class LoginRequest {
     private String email;
     private String password;
-    private boolean returnSecureToken;
 }

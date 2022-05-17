@@ -64,8 +64,7 @@ public class UsuarioController {
         RequisicaoUsuario requisicaoUsuario = objectMapper.readValue(usuario, RequisicaoUsuario.class);
         Usuario novoUsuario = new Usuario();
         User user = userRepositorio.findByEmail(requisicaoUsuario.getEmail()).orElse(null);
-        novoUsuario.setEmail(requisicaoUsuario.getEmail());
-        novoUsuario.setPassword(requisicaoUsuario.getPassword());
+
         novoUsuario.setUser(user);
         String profileImage = UUID.randomUUID() + "_" + Long.toHexString(new Date().getTime());
         novoUsuario.getUser().setProfileImage(profileImage + ".jpg");

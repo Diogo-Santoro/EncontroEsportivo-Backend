@@ -18,7 +18,7 @@ public class RequisicaoUsuario {
     String nomeUsuario;
     String cep;
     String esporteFav;
-    String profileImage;
+
 
 
 }

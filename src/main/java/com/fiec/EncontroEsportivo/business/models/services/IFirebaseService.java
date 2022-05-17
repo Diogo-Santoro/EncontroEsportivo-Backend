@@ -1,10 +1,11 @@
 package com.fiec.EncontroEsportivo.business.models.services;
 
-import com.fiec.EncontroEsportivo.business.models.dto.FirebaseAuthRequest;
+import com.fiec.EncontroEsportivo.business.models.dto.LoginRequest;
+import com.fiec.EncontroEsportivo.business.models.dto.RegisterRequest;
 
 public interface IFirebaseService {
-    void register(FirebaseAuthRequest firebaseAuthRequest) throws Exception;
+    void login(String email, String password) throws Exception;
 
-    void login(FirebaseAuthRequest firebaseAuthRequest) throws Exception;
+    void register(String email, String password) throws Exception;
 }
 
