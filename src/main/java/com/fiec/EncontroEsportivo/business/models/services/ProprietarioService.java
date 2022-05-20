@@ -32,8 +32,6 @@ import java.util.List;
 
             Proprietario proprietarioAnterior = proprietarioRepositorio.findById(idProprietario).orElseThrow();
             proprietarioAnterior.setNome(proprietario.getNome());
-            proprietarioAnterior.setEmail(proprietario.getEmail());
-            proprietarioAnterior.setSenha(proprietario.getSenha());
             proprietarioAnterior.setTelefone(proprietario.getTelefone());
             proprietarioAnterior.setCnpj(proprietario.getCnpj());
 

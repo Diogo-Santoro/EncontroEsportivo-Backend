@@ -20,7 +20,7 @@ public class EventoController {
     }
 
     @PostMapping
-    public void saveLugar(@RequestBody Evento evento) {
+    public void saveEvento(@RequestBody Evento evento) {
         eventoService.saveEvento(evento);
     }
 

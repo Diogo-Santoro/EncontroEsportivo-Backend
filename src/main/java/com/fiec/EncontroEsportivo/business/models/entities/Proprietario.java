@@ -37,12 +37,13 @@ public class Proprietario implements Serializable {
     @NotNull
     private String nome;
     @NotNull
-    private String email;
-    @NotNull
-    private String senha;
-    @NotNull
     private String telefone;
     @NotNull
     private String cnpj;
+
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_user", nullable = false)
+    private User user;
 }
 

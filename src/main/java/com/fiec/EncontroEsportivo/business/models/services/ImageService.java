@@ -16,10 +16,9 @@ public class ImageService {
 
         Usuario usuarioAnterior = usuarioRepositorio.findById(idUsuario).orElse(null);
 
-        usuarioAnterior.getUser().setProfileImage(user.getProfileImage());
+        usuarioAnterior.setProfileImage(usuario.getProfileImage());
 
 
         usuarioRepositorio.save(usuarioAnterior);
 
     }}
-

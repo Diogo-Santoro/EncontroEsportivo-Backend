@@ -30,6 +30,7 @@ public class Lugar implements Serializable {
 
     private String descricao;
 
+    @NotNull
     private float valor;
     @NotNull
     private String rua;

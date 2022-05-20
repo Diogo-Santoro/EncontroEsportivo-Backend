@@ -11,11 +11,10 @@ public interface IUsuarioService {
 
     void saveUsuario(Usuario usuario);
 
-    void atualizaUsuario(User user, Usuario usuario, String idUsuario);
-
     Usuario pegaUsuario(String idUsuario);
 
     void deletaUsuario(String idUsuario);
 
+    void atualizaUsuario(Usuario usuario, String idUsuario, User user);
 }
 

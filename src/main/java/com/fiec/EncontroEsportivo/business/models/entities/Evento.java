@@ -28,13 +28,13 @@ import java.util.Date;
 
 
     @OneToOne
-    @JoinColumn(name= "idLugar")
+    @JoinColumn(name= "id_lugar")
     private Lugar lugar;
 
 
 
     @ManyToOne
-    @JoinColumn(name = "idUsuario")
+    @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 
 

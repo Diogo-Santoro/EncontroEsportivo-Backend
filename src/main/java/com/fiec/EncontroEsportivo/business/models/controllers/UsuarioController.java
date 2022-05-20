@@ -31,6 +31,7 @@ public class UsuarioController {
     @Autowired
     IUsuarioService usuarioService;
 
+
     @Autowired
     IUserRepositorio userRepositorio;
 
@@ -53,13 +54,14 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/{idUsuario}")
+
     public void deletaUsuario(@PathVariable("idUsuario") String idUsuario){
         usuarioService.deletaUsuario(idUsuario);
     }
 
 
     @PostMapping(value = "/comFoto",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public void saveUsuariocomFoto(@RequestParam("usuario") String usuario, @RequestParam("foto") MultipartFile file) throws IOException {
+    public void atualizaUsuariocomFoto(@RequestParam("usuario") String usuario, @RequestParam("foto") MultipartFile file) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         RequisicaoUsuario requisicaoUsuario = objectMapper.readValue(usuario, RequisicaoUsuario.class);
         Usuario novoUsuario = new Usuario();
@@ -67,7 +69,7 @@ public class UsuarioController {
 
         novoUsuario.setUser(user);
         String profileImage = UUID.randomUUID() + "_" + Long.toHexString(new Date().getTime());
-        novoUsuario.getUser().setProfileImage(profileImage + ".jpg");
+        novoUsuario.setProfileImage(profileImage + ".jpg");
         usuarioService.saveUsuario(novoUsuario);
 
         Path filename = Paths.get("uploads").resolve(profileImage);
