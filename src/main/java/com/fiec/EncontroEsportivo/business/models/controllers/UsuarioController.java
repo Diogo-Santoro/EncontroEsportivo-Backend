@@ -48,10 +48,10 @@ public class UsuarioController {
         return usuarioService.pegaUsuario(idUsuario);
     }
 
-    @PutMapping("/{idUsuario}")
+    /*@PutMapping("/{idUsuario}")
     public void atualizaUsuario(@PathVariable("idUsuario") String idUsuario, @RequestBody Usuario usuario){
         usuarioService.atualizaUsuario(usuario, idUsuario);
-    }
+    }*/
 
     @DeleteMapping("/{idUsuario}")
 

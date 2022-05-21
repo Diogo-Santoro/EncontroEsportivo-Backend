@@ -23,29 +23,39 @@ public class Lugar implements Serializable {
     @ToString.Exclude
     @Column(unique = true)
     private String idLugar;
-    @Column(unique = true)
 
-    @NotNull
+
     private String nomeLugar;
 
     private String descricao;
 
-    @NotNull
+
     private float valor;
-    @NotNull
+
     private String rua;
-    @NotNull
-    private int CEP;
-    @NotNull
+
+    private String cep;
+
     private String bairro;
-    @NotNull
+
     private int numero;
-    @NotNull
-    private Date disponibilidade;
-    @NotNull
+
+    private String disponibilidade;
+
     private float lat;
-    @NotNull
+
     private float lng;
 
 
 }
+
+/*{
+      "nomeLugar": "Cruzeiro treinos",
+        "valor": "0.5",
+        "rua": "Rua doidõe",
+        "cep": 1,
+        "bairro": "jardim esquisito",
+        "numero": 200,
+        "lat": -23.09625771114854,
+        "lng": -47.23066920083178
+        }*/

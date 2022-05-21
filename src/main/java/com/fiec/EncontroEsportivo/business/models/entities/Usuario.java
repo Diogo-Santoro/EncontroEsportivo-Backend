@@ -21,19 +21,19 @@ public class Usuario implements Serializable {
     @ToString.Exclude
     @Column(unique = true)
     private String idUsuario;
-    @NotNull
+
     private String bairro;
-    @NotNull
+
     private String cep;
-    @NotNull
+
     private String nomeUsuario;
-    @NotNull
+
     private String esporteFav;
 
     private String profileImage;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_user", nullable = false)
+    @JoinColumn(name = "id_user")
     private User user;
 }
 

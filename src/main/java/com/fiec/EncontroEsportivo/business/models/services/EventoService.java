@@ -3,6 +3,7 @@ package com.fiec.EncontroEsportivo.business.models.services;
 import com.fiec.EncontroEsportivo.business.models.entities.Evento;
 
 import com.fiec.EncontroEsportivo.business.models.repositories.IEventoRepositorio;
+import org.apache.naming.EjbRef;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

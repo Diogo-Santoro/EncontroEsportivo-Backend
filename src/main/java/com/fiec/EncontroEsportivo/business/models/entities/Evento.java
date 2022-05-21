@@ -17,6 +17,7 @@ import java.util.Date;
   @NoArgsConstructor
   @AllArgsConstructor
  public class Evento implements Serializable {
+
     @Id
     @GeneratedValue (generator = "uuid", strategy= GenerationType.AUTO)
     @GenericGenerator(name = "uuid", strategy = "uuid2")
@@ -27,29 +28,36 @@ import java.util.Date;
 
 
 
-    @OneToOne
-    @JoinColumn(name= "id_lugar")
-    private Lugar lugar;
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name= "id_lugar")
+//    private Lugar lugar;
 
 
 
-    @ManyToOne
-    @JoinColumn(name = "id_usuario")
-    private Usuario usuario;
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "id_usuario")
+//    private Usuario usuario;
 
 
 
     @NotNull
     private String nomeEvento;
     @NotNull
-    private Date dataHoraInicio;
+    private String dataHoraInicio;
     @NotNull
-    private Date dataHoraFim;
+    private String dataHoraFim;
+
     private String participantes;
 
 
 
-
+/*   "usuario": {"id": "b1df9270-9bd4-4987-bf55-e037be5245ee"},
+    "lugar": {"id":"4ccd8c15-540d-49fa-963a-e458d05f1387"},
+ "nomeEvento": "encontrinho dos cria",
+    "dataHoraInicio": "2022-05-20 00:00",
+    "dataHoraFim": "2020-05-20 00:30",
+    "participantes": "igor",
+    "cep": "123456"*/
 
 
 }

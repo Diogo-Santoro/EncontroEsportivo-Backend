@@ -37,7 +37,7 @@ public class LugarService implements ILugarService{
         lugarAnterior.setDescricao(lugar.getDescricao());
         lugarAnterior.setValor(lugar.getValor());
         lugarAnterior.setRua(lugar.getRua());
-        lugarAnterior.setCEP(lugar.getCEP());
+        lugarAnterior.setCep(lugar.getCep());
         lugarAnterior.setBairro(lugar.getBairro());
         lugarAnterior.setNumero(lugar.getNumero());
         lugarAnterior.setDisponibilidade(lugar.getDisponibilidade());

@@ -30,8 +30,6 @@ public class User implements UserDetails {
 
     @ToString.Exclude
     private String fcmToken;
-
-    private String nome;
     private String password;
 
 
