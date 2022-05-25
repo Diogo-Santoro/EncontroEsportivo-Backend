@@ -15,6 +15,6 @@ public interface IUsuarioService {
 
     void deletaUsuario(String idUsuario);
 
-    void atualizaUsuario(Usuario usuario, String idUsuario, User user);
+    void atualizaUsuario(Usuario usuario, String idUsuario);
 }
 

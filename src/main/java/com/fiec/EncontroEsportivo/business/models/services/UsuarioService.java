@@ -39,16 +39,16 @@ public class UsuarioService implements IUsuarioService {
     }
 
 
-    @Override
-    public void atualizaUsuario(Usuario usuario, String idUsuario, User user) {
-        Usuario usuarioAnterior = usuarioRepositorio.findById(idUsuario).orElse(null);
 
-        usuarioAnterior.getUser().setEmail(user.getEmail());
-        usuarioAnterior.getUser().setPassword(user.getPassword());
+    @Override
+    public void atualizaUsuario(Usuario usuario, String idUsuario) {
+        Usuario usuarioAnterior = usuarioRepositorio.findById(idUsuario).orElse(null);
         usuarioAnterior.setNomeUsuario(usuario.getNomeUsuario());
         usuarioAnterior.setBairro(usuario.getBairro());
         usuarioAnterior.setEsporteFav(usuario.getEsporteFav());
         usuarioAnterior.setProfileImage(usuario.getProfileImage());
+        usuarioAnterior.setCep(usuario.getCep());
+
 
         usuarioRepositorio.save(usuarioAnterior);
 

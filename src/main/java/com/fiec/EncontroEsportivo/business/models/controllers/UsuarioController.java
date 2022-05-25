@@ -8,9 +8,11 @@ import com.fiec.EncontroEsportivo.business.models.entities.Usuario;
 import com.fiec.EncontroEsportivo.business.models.repositories.IUserRepositorio;
 import com.fiec.EncontroEsportivo.business.models.services.IUsuarioService;
 import net.coobird.thumbnailator.Thumbnails;
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -48,10 +50,10 @@ public class UsuarioController {
         return usuarioService.pegaUsuario(idUsuario);
     }
 
-    /*@PutMapping("/{idUsuario}")
+    @PutMapping("/{idUsuario}")
     public void atualizaUsuario(@PathVariable("idUsuario") String idUsuario, @RequestBody Usuario usuario){
         usuarioService.atualizaUsuario(usuario, idUsuario);
-    }*/
+    }
 
     @DeleteMapping("/{idUsuario}")
 
@@ -60,7 +62,7 @@ public class UsuarioController {
     }
 
 
-    @PostMapping(value = "/comFoto",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PutMapping(value = "/comFoto",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public void atualizaUsuariocomFoto(@RequestParam("usuario") String usuario, @RequestParam("foto") MultipartFile file) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         RequisicaoUsuario requisicaoUsuario = objectMapper.readValue(usuario, RequisicaoUsuario.class);
@@ -84,8 +86,6 @@ public class UsuarioController {
                 .outputFormat("jpg")
                 .toFile(new File(thumbFilename.toString()));
 
-
     }
-
 
 }

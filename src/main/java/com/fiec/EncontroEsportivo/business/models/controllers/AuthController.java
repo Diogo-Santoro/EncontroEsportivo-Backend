@@ -29,7 +29,7 @@ public class AuthController {
 
     @PostMapping("/register")
 
-    public void registraUsuarioFirebase(@RequestBody RegisterRequest firebaseAuthRequest) throws Exception {
+    public void registraUsuarioFirebase(@RequestBody  RegisterRequest firebaseAuthRequest) throws Exception {
         firebaseService.register(firebaseAuthRequest.getEmail(), firebaseAuthRequest.getPassword());
         String email = firebaseAuthRequest.getEmail();
 

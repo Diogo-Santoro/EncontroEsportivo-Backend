@@ -34,7 +34,6 @@ public class EventoService implements IEventoService{
         eventoAnterior.setNomeEvento(evento.getNomeEvento());
         eventoAnterior.setDataHoraInicio(evento.getDataHoraInicio());
         eventoAnterior.setDataHoraFim(evento.getDataHoraFim());
-        eventoAnterior.setParticipantes(evento.getParticipantes());
         eventoRepositorio.save(eventoAnterior);
 
     }
