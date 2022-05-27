@@ -14,10 +14,6 @@ public class LugarController {
     @Autowired
     ILugarService lugarService;
 
-    @GetMapping
-    public List<Lugar> getLugar()  {
-        return lugarService.getLugar();
-    }
 
     @PostMapping
     public void saveLugar(@RequestBody Lugar lugar) {

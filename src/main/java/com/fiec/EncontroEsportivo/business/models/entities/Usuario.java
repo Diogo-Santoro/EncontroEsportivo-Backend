@@ -22,6 +22,7 @@ public class Usuario implements Serializable {
     @Column(unique = true)
     private String idUsuario;
 
+
     private String bairro;
 
     private String cep;
@@ -37,3 +38,14 @@ public class Usuario implements Serializable {
     private User user;
 }
 
+//      Teste:
+//{
+//        "bairro": "jardim bairro",
+//        "cep": "13344450",
+//        "nomeUsuario": "diogo",
+//        "esporteFav": "volei"
+//
+//        }
+
+// Token teste
+//eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkaW9nb3Rlc3RlQG1haWwuY29tIiwiZXhwIjoxNjUzNzA4MDUzLCJpYXQiOjE2NTM2OTAwNTN9.4wZHobGxHdXORHCgC6qkP_R_W3pNkJUdIfxH1t2pUiNRhu6GFjRHeltt1jjWU6m1puil7VFzgfhxX4qat49e5w

@@ -15,12 +15,6 @@ public class LugarService implements ILugarService{
     @Autowired
     ILugarRepositorio lugarRepositorio;
 
-    @Override
-    public List<Lugar> getLugar() {
-
-        return lugarRepositorio.findAll();
-
-    }
 
 
     @Override

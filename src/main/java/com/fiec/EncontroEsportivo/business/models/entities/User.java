@@ -25,14 +25,12 @@ public class User implements UserDetails {
     @ToString.Exclude
     private String idUser;
 
+
     @Column(unique = true)
     private String email;
-
     @ToString.Exclude
     private String fcmToken;
     private String password;
-
-
 
 
     @Override

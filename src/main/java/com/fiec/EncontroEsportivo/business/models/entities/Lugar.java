@@ -29,7 +29,6 @@ public class Lugar implements Serializable {
 
     private String descricao;
 
-
     private float valor;
 
     private String rua;
@@ -45,11 +44,8 @@ public class Lugar implements Serializable {
     private float lat;
 
     private float lng;
-
-
 }
-
-
+//  Teste:
 //      "nomeLugar": "Cruzeiro treinos",
 //        "valor": "0.5",
 //        "rua": "Rua doidõe",

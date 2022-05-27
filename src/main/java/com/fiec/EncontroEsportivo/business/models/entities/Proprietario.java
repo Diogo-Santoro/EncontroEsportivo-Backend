@@ -22,25 +22,19 @@ public class Proprietario implements Serializable {
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @ToString.Exclude
-    @NotNull
     @Column(unique = true)
     private String idProprietario;
+
 
     @ManyToOne
     @JoinColumn(name = "id_lugar")
     private Lugar lugar;
 
-
-
-
-    @Column(unique = true)
-    @NotNull
     private String nome;
-    @NotNull
-    private String telefone;
-    @NotNull
-    private String cnpj;
 
+    private String telefone;
+
+    private String cnpj;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_user", nullable = false)

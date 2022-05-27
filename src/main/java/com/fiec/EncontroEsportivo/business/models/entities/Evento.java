@@ -30,40 +30,28 @@ import java.util.List;
     private String idEvento;
 
 
+   @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name= "id_lugar")
+    private Lugar lugar;
 
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name= "id_lugar")
-//    private Lugar lugar;
-
-
-
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "id_usuario")
-//    private Usuario usuario;
-
-
-
-    @NotNull
     private String nomeEvento;
-    @NotNull
+
     private String dataHoraInicio;
-    @NotNull
+
     private String dataHoraFim;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_user")
+    private User user;
 
 //    @OneToMany(mappedBy = "evento", fetch = FetchType.LAZY)
 //    private List<UsuarioListedResponse> participantes = new ArrayList<>();
 
 
-
-
-
-//   "usuario": {"id": "b1df9270-9bd4-4987-bf55-e037be5245ee"},
-//    "lugar": {"id":"4ccd8c15-540d-49fa-963a-e458d05f1387"},
+//    Teste
 // "nomeEvento": "encontrinho dos cria",
 //    "dataHoraInicio": "2022-05-20 00:00",
 //    "dataHoraFim": "2020-05-20 00:30",
 //    "participantes": "igor",
 //    "cep": "123456"
-
-
 }
