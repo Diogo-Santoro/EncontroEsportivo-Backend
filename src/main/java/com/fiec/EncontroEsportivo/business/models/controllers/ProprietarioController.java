@@ -1,4 +1,5 @@
 package com.fiec.EncontroEsportivo.business.models.controllers;
+import com.fiec.EncontroEsportivo.business.models.dto.ProprietarioRequestDto;
 import com.fiec.EncontroEsportivo.business.models.entities.Proprietario;
 import com.fiec.EncontroEsportivo.business.models.services.IProprietarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class ProprietarioController {
     }
 
     @PostMapping
-    public void savePropritario(@RequestBody Proprietario proprietario) {
+    public void savePropritario(@RequestBody ProprietarioRequestDto proprietario) {
         proprietarioService.saveProprietario(proprietario);
     }
 

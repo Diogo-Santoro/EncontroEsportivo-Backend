@@ -1,7 +1,10 @@
 package com.fiec.EncontroEsportivo.business.models.services;
 
+import com.fiec.EncontroEsportivo.business.models.dto.ProprietarioRequestDto;
+import com.fiec.EncontroEsportivo.business.models.entities.User;
 import com.fiec.EncontroEsportivo.business.models.repositories.IProprietarioRepositorio;
 import com.fiec.EncontroEsportivo.business.models.entities.Proprietario;
+import com.fiec.EncontroEsportivo.business.models.repositories.IUserRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +15,8 @@ import java.util.List;
 
         @Autowired
         IProprietarioRepositorio proprietarioRepositorio;
+        @Autowired
+        IUserRepositorio userRepositorio;
 
         @Override
         public List<Proprietario> getProprietario() {
@@ -22,8 +27,19 @@ import java.util.List;
 
 
         @Override
-        public void saveProprietario(Proprietario proprietario) {
-            proprietarioRepositorio.save(proprietario);
+        public void saveProprietario(ProprietarioRequestDto proprietario) {
+            User user = userRepositorio.save(User.builder()
+                            .email(proprietario.getEmail())
+                            .role("PROPRIETARIO")
+
+                    .build());
+            proprietarioRepositorio.save(Proprietario.builder()
+                            .cnpj(proprietario.getCnpj())
+                            .nome(proprietario.getNome())
+                            .telefone(proprietario.getTelefone())
+                            .user(user)
+                    .build());
+
         }
 
         @Override

@@ -1,6 +1,6 @@
 package com.fiec.EncontroEsportivo;
 
-public enum esporteEnum {
+public enum EsporteEnum {
     Futebol,
     Voleibol,
     Basquete,

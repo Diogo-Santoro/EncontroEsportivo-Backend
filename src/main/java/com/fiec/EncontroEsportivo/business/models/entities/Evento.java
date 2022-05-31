@@ -48,6 +48,8 @@ import java.util.List;
 //    private List<UsuarioListedResponse> participantes = new ArrayList<>();
 
 
+
+
 //    Teste
 // "nomeEvento": "encontrinho dos cria",
 //    "dataHoraInicio": "2022-05-20 00:00",

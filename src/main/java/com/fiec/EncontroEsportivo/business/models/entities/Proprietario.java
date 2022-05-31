@@ -2,16 +2,13 @@
 package com.fiec.EncontroEsportivo.business.models.entities;
 
 import com.google.firebase.database.annotations.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
-
+@Builder
 @Entity
 @Table(name = "proprietario")
 @Data

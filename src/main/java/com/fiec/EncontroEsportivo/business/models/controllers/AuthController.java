@@ -2,11 +2,13 @@ package com.fiec.EncontroEsportivo.business.models.controllers;
 
 import com.fiec.EncontroEsportivo.business.models.Utils.JwtTokenUtil;
 import com.fiec.EncontroEsportivo.business.models.dto.LoginRequest;
+import com.fiec.EncontroEsportivo.business.models.dto.ProprietarioRequestDto;
 import com.fiec.EncontroEsportivo.business.models.dto.RegisterRequest;
 import com.fiec.EncontroEsportivo.business.models.dto.TokenResponse;
 import com.fiec.EncontroEsportivo.business.models.entities.User;
 import com.fiec.EncontroEsportivo.business.models.repositories.IUserRepositorio;
 import com.fiec.EncontroEsportivo.business.models.services.IFirebaseService;
+import com.fiec.EncontroEsportivo.business.models.services.IProprietarioService;
 import com.fiec.EncontroEsportivo.business.models.services.JwtUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,6 +20,8 @@ public class AuthController {
 
     @Autowired
     IFirebaseService firebaseService;
+    @Autowired
+    IProprietarioService proprietarioService;
 
     @Autowired
     JwtTokenUtil jwtTokenUtil;
@@ -48,4 +52,11 @@ public class AuthController {
         return new TokenResponse(token);
 
     }
+    @PostMapping("/register/owner")
+
+    public void registraProprietarioFirebase(@RequestBody ProprietarioRequestDto proprietario) throws Exception {
+        firebaseService.register(proprietario.getEmail(), proprietario.getPassword());
+        proprietarioService.saveProprietario(proprietario);
+    }
+
 }
