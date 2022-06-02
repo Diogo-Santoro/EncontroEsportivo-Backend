@@ -45,13 +45,3 @@ public class Lugar implements Serializable {
 
     private float lng;
 }
-//  Teste:
-//      "nomeLugar": "Cruzeiro treinos",
-//        "valor": "0.5",
-//        "rua": "Rua doidõe",
-//        "cep": 1,
-//        "bairro": "jardim esquisito",
-//        "numero": 200,
-//        "lat": -23.09625771114854,
-//        "lng": -47.23066920083178
-//        }

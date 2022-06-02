@@ -6,7 +6,7 @@ import lombok.Data;
 @Builder
 @Data
 
-public class UsuarioListedResponse {
+public class UsuarioListedRequest {
 
     private String nomeUsuario;
 

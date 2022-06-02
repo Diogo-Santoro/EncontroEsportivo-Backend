@@ -1,6 +1,7 @@
 package com.fiec.EncontroEsportivo.business.models.entities;
 
-import com.fiec.EncontroEsportivo.business.models.dto.UsuarioListedResponse;
+
+import com.fiec.EncontroEsportivo.business.models.dto.UsuarioListedRequest;
 import com.google.firebase.database.annotations.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,7 +12,6 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -22,7 +22,7 @@ import java.util.List;
  public class Evento implements Serializable {
 
     @Id
-    @GeneratedValue (generator = "uuid", strategy= GenerationType.AUTO)
+    @GeneratedValue(generator = "uuid", strategy = GenerationType.AUTO)
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @ToString.Exclude
     @NotNull
@@ -30,8 +30,8 @@ import java.util.List;
     private String idEvento;
 
 
-   @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name= "id_lugar")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_lugar")
     private Lugar lugar;
 
     private String nomeEvento;
@@ -44,16 +44,12 @@ import java.util.List;
     @JoinColumn(name = "id_user")
     private User user;
 
-//    @OneToMany(mappedBy = "evento", fetch = FetchType.LAZY)
-//    private List<UsuarioListedResponse> participantes = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(name = "participa", joinColumns = {@JoinColumn(name = "id_evento")}, inverseJoinColumns = {@JoinColumn(name = "id_usuario")})
+    private List<Usuario> participantes = new ArrayList<>();
 
 
 
-
-//    Teste
-// "nomeEvento": "encontrinho dos cria",
-//    "dataHoraInicio": "2022-05-20 00:00",
-//    "dataHoraFim": "2020-05-20 00:30",
-//    "participantes": "igor",
-//    "cep": "123456"
 }
+

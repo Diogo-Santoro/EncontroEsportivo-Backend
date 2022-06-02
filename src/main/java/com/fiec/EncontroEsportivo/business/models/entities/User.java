@@ -18,7 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "tb_users")
-public class User implements UserDetails {
+public class    User implements UserDetails {
 
     @Id
     @GeneratedValue(generator = "uuid")
