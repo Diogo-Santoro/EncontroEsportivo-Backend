@@ -6,8 +6,8 @@ import lombok.Data;
 @Builder
 @Data
 
-public class UsuarioListedRequest {
-
+public class EventoListedResponse {
+    private String idUsuario;
     private String nomeUsuario;
 
 }

@@ -1,7 +1,7 @@
 package com.fiec.EncontroEsportivo.business.models.entities;
 
 
-import com.fiec.EncontroEsportivo.business.models.dto.UsuarioListedRequest;
+
 import com.google.firebase.database.annotations.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
