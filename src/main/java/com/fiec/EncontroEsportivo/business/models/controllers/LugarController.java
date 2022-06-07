@@ -1,6 +1,7 @@
 package com.fiec.EncontroEsportivo.business.models.controllers;
 
 import com.fiec.EncontroEsportivo.business.models.entities.Lugar;
+import com.fiec.EncontroEsportivo.business.models.entities.Usuario;
 import com.fiec.EncontroEsportivo.business.models.services.ILugarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,10 @@ public class LugarController {
     @Autowired
     ILugarService lugarService;
 
+    @GetMapping
+    public List<Lugar> getLugar(){
+        return lugarService.getLugar();
+    }
 
     @PostMapping
     public void saveLugar(@RequestBody Lugar lugar) {

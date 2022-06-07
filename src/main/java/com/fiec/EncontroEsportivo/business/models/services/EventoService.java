@@ -3,8 +3,9 @@ package com.fiec.EncontroEsportivo.business.models.services;
 import com.fiec.EncontroEsportivo.business.models.entities.Evento;
 
 import com.fiec.EncontroEsportivo.business.models.repositories.IEventoRepositorio;
-import org.apache.naming.EjbRef;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,12 +14,6 @@ public class EventoService implements IEventoService{
     @Autowired
     IEventoRepositorio eventoRepositorio;
 
-    @Override
-    public List<Evento> getEvento() {
-
-        return eventoRepositorio.findAll();
-
-    }
 
 
     @Override
@@ -47,6 +42,11 @@ public class EventoService implements IEventoService{
     @Override
     public void deletaEvento(String idEvento) {
         eventoRepositorio.deleteById(idEvento);
+    }
+
+    @Override
+    public Page<Evento> getAllEventos(int page, int size) {
+        return eventoRepositorio.findAll(PageRequest.of(page, size));
     }
 
 

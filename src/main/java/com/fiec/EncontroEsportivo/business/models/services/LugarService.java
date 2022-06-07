@@ -1,12 +1,11 @@
 package com.fiec.EncontroEsportivo.business.models.services;
 
 import com.fiec.EncontroEsportivo.business.models.entities.Lugar;
-import com.fiec.EncontroEsportivo.business.models.entities.Usuario;
 import com.fiec.EncontroEsportivo.business.models.repositories.ILugarRepositorio;
-import com.fiec.EncontroEsportivo.business.models.repositories.IUsuarioRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -48,6 +47,13 @@ public class LugarService implements ILugarService{
     @Override
     public void deletaLugar(String idLugar) {
         lugarRepositorio.deleteById(idLugar);
+    }
+
+    @Override
+    public List<Lugar> getLugar() {
+        List<Lugar> lugar = new ArrayList<>();
+        lugarRepositorio.findAll();
+        return lugar;
     }
 
 

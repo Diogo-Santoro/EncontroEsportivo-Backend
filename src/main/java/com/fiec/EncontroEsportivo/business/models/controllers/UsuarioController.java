@@ -65,7 +65,7 @@ public class UsuarioController {
     }
 
 
-    @PutMapping(value = "/comFoto",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    /*@PutMapping(value = "/comFoto",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public void atualizaUsuariocomFoto(@RequestParam("usuario") String usuario, @RequestParam("foto") MultipartFile file) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         UsuarioImageRequest imagemUsuario = objectMapper.readValue(usuario, UsuarioImageRequest.class);
@@ -87,6 +87,6 @@ public class UsuarioController {
                 .outputFormat("jpg")
                 .toFile(new File(thumbFilename.toString()));
 
-    }
+    }*/
 
 }
