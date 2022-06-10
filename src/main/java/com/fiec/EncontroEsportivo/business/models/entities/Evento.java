@@ -2,7 +2,6 @@ package com.fiec.EncontroEsportivo.business.models.entities;
 
 
 
-import com.google.firebase.database.annotations.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,12 +24,12 @@ import java.util.List;
     @GeneratedValue(generator = "uuid", strategy = GenerationType.AUTO)
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @ToString.Exclude
-    @NotNull
+
     @Column(unique = true)
     private String idEvento;
 
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "id_lugar")
     private Lugar lugar;
 
@@ -39,6 +38,12 @@ import java.util.List;
     private String dataHoraInicio;
 
     private String dataHoraFim;
+
+
+    @Column(nullable = false)
+    private String esportes;
+
+    private double valor;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_user")

@@ -1,11 +1,12 @@
 package com.fiec.EncontroEsportivo.business.models.services;
 
+import com.fiec.EncontroEsportivo.business.models.entities.Evento;
 import com.fiec.EncontroEsportivo.business.models.entities.Lugar;
+import com.fiec.EncontroEsportivo.business.models.repositories.IEventoRepositorio;
 import com.fiec.EncontroEsportivo.business.models.repositories.ILugarRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -13,6 +14,9 @@ public class LugarService implements ILugarService{
 
     @Autowired
     ILugarRepositorio lugarRepositorio;
+
+    @Autowired
+    IEventoRepositorio eventoRepositorio;
 
 
 
@@ -22,18 +26,18 @@ public class LugarService implements ILugarService{
     }
 
     @Override
-    public void atualizaLugar(Lugar lugar, String idLugar) {
+    public void atualizaLugar(Lugar lugar, String idLugar, String idEvento) {
 
-
+        Evento evento = eventoRepositorio.findById(idEvento).orElse(null);
         Lugar lugarAnterior = lugarRepositorio.findById(idLugar).orElseThrow();
         lugarAnterior.setNomeLugar(lugar.getNomeLugar());
         lugarAnterior.setDescricao(lugar.getDescricao());
-        lugarAnterior.setValor(lugar.getValor());
-        lugarAnterior.setRua(lugar.getRua());
         lugarAnterior.setCep(lugar.getCep());
-        lugarAnterior.setBairro(lugar.getBairro());
         lugarAnterior.setNumero(lugar.getNumero());
         lugarAnterior.setDisponibilidade(lugar.getDisponibilidade());
+        if (evento != null){
+            lugarAnterior.getEventos().add(evento);
+        }
         lugarRepositorio.save(lugarAnterior);
 
     }
@@ -51,9 +55,9 @@ public class LugarService implements ILugarService{
 
     @Override
     public List<Lugar> getLugar() {
-        List<Lugar> lugar = new ArrayList<>();
-        lugarRepositorio.findAll();
-        return lugar;
+
+        return lugarRepositorio.findAll();
+
     }
 
 

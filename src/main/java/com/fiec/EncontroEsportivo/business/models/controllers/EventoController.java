@@ -1,5 +1,6 @@
 package com.fiec.EncontroEsportivo.business.models.controllers;
 
+import com.fiec.EncontroEsportivo.EsporteEnum;
 import com.fiec.EncontroEsportivo.business.models.dto.EventoListedResponse;
 import com.fiec.EncontroEsportivo.business.models.entities.Evento;
 import com.fiec.EncontroEsportivo.business.models.entities.Lugar;
@@ -12,6 +13,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -79,6 +81,8 @@ public class EventoController {
 
         private String dataHoraFim;
 
+        private List<EsporteEnum> esportes;
+
         public static EventoDto createDto(Evento evento){
             return EventoDto.builder()
                     .idEvento(evento.getIdEvento())
@@ -86,6 +90,8 @@ public class EventoController {
                     .dataHoraFim(evento.getDataHoraFim())
                     .nomeEvento(evento.getNomeEvento())
                     .lugar(evento.getLugar())
+                    .esportes(Arrays.stream(evento.getEsportes().split(",")).map(EsporteEnum::valueOf).collect(Collectors.toList()))
+
                     .build();
         }
 

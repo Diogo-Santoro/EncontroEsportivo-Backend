@@ -1,7 +1,6 @@
 package com.fiec.EncontroEsportivo.business.models.services;
 
 import com.fiec.EncontroEsportivo.business.models.entities.Lugar;
-import com.fiec.EncontroEsportivo.business.models.entities.Usuario;
 
 import java.util.List;
 
@@ -11,7 +10,7 @@ public interface ILugarService {
 
     Lugar pegaLugar(String id_lugar);
 
-    void atualizaLugar(Lugar lugar, String id_lugar);
+    void atualizaLugar(Lugar lugar, String id_lugar, String idEvento);
 
     void deletaLugar(String id_lugar);
 
