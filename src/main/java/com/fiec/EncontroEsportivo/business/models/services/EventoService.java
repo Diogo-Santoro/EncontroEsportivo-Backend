@@ -1,15 +1,15 @@
 package com.fiec.EncontroEsportivo.business.models.services;
 
 import com.fiec.EncontroEsportivo.business.models.entities.Evento;
-
 import com.fiec.EncontroEsportivo.business.models.repositories.IEventoRepositorio;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 @Service
+@Slf4j
 public class EventoService implements IEventoService{
     @Autowired
     IEventoRepositorio eventoRepositorio;

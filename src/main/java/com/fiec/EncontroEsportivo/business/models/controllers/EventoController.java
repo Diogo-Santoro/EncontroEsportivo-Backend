@@ -4,25 +4,26 @@ import com.fiec.EncontroEsportivo.EsporteEnum;
 import com.fiec.EncontroEsportivo.business.models.dto.EventoListedResponse;
 import com.fiec.EncontroEsportivo.business.models.entities.Evento;
 import com.fiec.EncontroEsportivo.business.models.entities.Lugar;
-import com.fiec.EncontroEsportivo.business.models.entities.Usuario;
 import com.fiec.EncontroEsportivo.business.models.services.IEventoService;
 import lombok.Builder;
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
-
 import javax.websocket.server.PathParam;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
+@Slf4j
 @RequestMapping("/evento")
 public class EventoController {
 
     @Autowired
     IEventoService eventoService;
+
 
     @GetMapping("/{idEvento}/participantes")
     public List <EventoListedResponse> getListedEventos(@PathParam("idEvento") String idEvento){
@@ -33,14 +34,12 @@ public class EventoController {
                 .idUsuario(p.getIdUsuario())
                 .build()
         ).collect(Collectors.toList());
-
-
-
     }
 
     @PostMapping
     public void saveEvento(@RequestBody Evento evento) {
         eventoService.saveEvento(evento);
+        log.info("Evento criado!");
     }
 
     @GetMapping
@@ -48,7 +47,6 @@ public class EventoController {
         if (page == null || size == null){
             page = 0;
             size = 10;
-
         }
         Page<Evento> eventos = eventoService.getAllEventos(page, size);
 
@@ -91,11 +89,8 @@ public class EventoController {
                     .nomeEvento(evento.getNomeEvento())
                     .lugar(evento.getLugar())
                     .esportes(Arrays.stream(evento.getEsportes().split(",")).map(EsporteEnum::valueOf).collect(Collectors.toList()))
-
                     .build();
         }
-
-
 
     }
     @Data
@@ -103,7 +98,5 @@ public class EventoController {
     static class AllEventosResponse{
         int totalPages;
         List<EventoDto> eventoDtos;
-
-
     }
 }

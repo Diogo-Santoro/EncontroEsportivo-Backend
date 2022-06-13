@@ -1,19 +1,17 @@
 package com.fiec.EncontroEsportivo.business.models.controllers;
 
-import com.fiec.EncontroEsportivo.EsporteEnum;
 import com.fiec.EncontroEsportivo.business.models.dto.LugarRequestDto;
-import com.fiec.EncontroEsportivo.business.models.dto.LugarResponseDto;
 import com.fiec.EncontroEsportivo.business.models.entities.Lugar;
-import com.fiec.EncontroEsportivo.business.models.entities.Usuario;
 import com.fiec.EncontroEsportivo.business.models.services.ILugarService;
+import lombok.extern.slf4j.Slf4j;
+import org.hibernate.loader.plan.build.internal.LoadGraphLoadPlanBuildingStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 @RestController
+@Slf4j
 @RequestMapping("/lugar")
 public class LugarController {
 
@@ -29,6 +27,7 @@ public class LugarController {
     @PostMapping
     public void saveLugar(@RequestBody Lugar lugar) {
         lugarService.saveLugar(lugar);
+        log.info("Lugar Cadastrado");
     }
 
     @GetMapping("/{idLugar}")
@@ -44,12 +43,9 @@ public class LugarController {
                 .descricao(lugarRequestDto.getDescricao())
                 .disponibilidade(lugarRequestDto.getDisponibilidade())
                 .esporteDisp(lugarRequestDto.getDisponibilidade())
-
                 .build();
-
-
-
         lugarService.atualizaLugar(lugar, idLugar, lugarRequestDto.getIdEvento());
+        log.info("Informação(ões) do lugar Atualizada(s)");
     }
 
     @DeleteMapping("/{idLugar}")

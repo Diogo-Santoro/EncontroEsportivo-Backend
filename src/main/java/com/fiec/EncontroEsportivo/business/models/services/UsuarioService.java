@@ -3,11 +3,12 @@ package com.fiec.EncontroEsportivo.business.models.services;
 import com.fiec.EncontroEsportivo.business.models.entities.User;
 import com.fiec.EncontroEsportivo.business.models.entities.Usuario;
 import com.fiec.EncontroEsportivo.business.models.repositories.IUsuarioRepositorio;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Slf4j
 @Service
 public class UsuarioService implements IUsuarioService {
 
@@ -51,6 +52,7 @@ public class UsuarioService implements IUsuarioService {
 
 
         usuarioRepositorio.save(usuarioAnterior);
+        log.info("Usuário Atualizado");
 
     }
 

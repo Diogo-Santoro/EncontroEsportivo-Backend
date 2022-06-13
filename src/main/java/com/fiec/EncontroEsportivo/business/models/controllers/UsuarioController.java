@@ -1,32 +1,15 @@
 package com.fiec.EncontroEsportivo.business.models.controllers;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import com.fiec.EncontroEsportivo.business.models.dto.RequisicaoUsuario;
-import com.fiec.EncontroEsportivo.business.models.dto.UsuarioImageRequest;
-import com.fiec.EncontroEsportivo.business.models.entities.User;
 import com.fiec.EncontroEsportivo.business.models.entities.Usuario;
 import com.fiec.EncontroEsportivo.business.models.repositories.IUserRepositorio;
 import com.fiec.EncontroEsportivo.business.models.repositories.IUsuarioRepositorio;
 import com.fiec.EncontroEsportivo.business.models.services.IUsuarioService;
-import net.coobird.thumbnailator.Thumbnails;
-
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import org.springframework.http.MediaType;
-
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Date;
-import java.util.UUID;
-
 
 @RestController
+@Slf4j
 @RequestMapping("/usuario")
 public class UsuarioController {
 
@@ -45,6 +28,7 @@ public class UsuarioController {
     @PostMapping
     public void saveUsuario(@RequestBody Usuario usuario){
         usuarioService.saveUsuario(usuario);
+        log.info("Usuário com cadastro terminado");
     }
 
     @GetMapping("/{idUsuario}")
@@ -56,6 +40,7 @@ public class UsuarioController {
     @PutMapping("/{idUsuario}")
     public void atualizaUsuario(@PathVariable("idUsuario") String idUsuario, @RequestBody Usuario usuario){
         usuarioService.atualizaUsuario(usuario, idUsuario);
+        log.info("Usuário Atualizado");
     }
 
     @DeleteMapping("/{idUsuario}")
