@@ -42,20 +42,6 @@ public class EventoController {
         log.info("Evento criado!");
     }
 
-    @GetMapping
-    public AllEventosResponse getAllEventos(@RequestParam("page") Integer page, @RequestParam("size") Integer size) {
-        if (page == null || size == null){
-            page = 0;
-            size = 10;
-        }
-        Page<Evento> eventos = eventoService.getAllEventos(page, size);
-
-        return AllEventosResponse.builder()
-                .eventoDtos(eventos.stream().map(EventoDto::createDto).collect(Collectors.toList()))
-                .totalPages(eventos.getTotalPages())
-                .build();
-    }
-
     @GetMapping("/{idEvento}")
     public EventoDto pegaEvento(@PathVariable("idEvento") String idEvento) {
 
@@ -92,11 +78,5 @@ public class EventoController {
                     .build();
         }
 
-    }
-    @Data
-    @Builder
-    static class AllEventosResponse{
-        int totalPages;
-        List<EventoDto> eventoDtos;
     }
 }
