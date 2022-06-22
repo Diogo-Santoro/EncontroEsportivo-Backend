@@ -13,6 +13,6 @@ import java.util.List;
 
 
 public interface IEventoRepositorio extends JpaRepository<Evento, String> {
-    Page<Evento> findAll(Pageable pageable);
+
 
 }

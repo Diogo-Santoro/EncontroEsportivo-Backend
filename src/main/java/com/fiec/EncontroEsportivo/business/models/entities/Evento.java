@@ -33,6 +33,8 @@ import java.util.List;
     @JoinColumn(name = "id_lugar")
     private Lugar lugar;
 
+    private String nomeLugar;
+
     private String nomeEvento;
 
     private String dataHoraInicio;
@@ -42,8 +44,6 @@ import java.util.List;
 
     @Column(nullable = false)
     private String esportes;
-
-    private double valor;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_user")

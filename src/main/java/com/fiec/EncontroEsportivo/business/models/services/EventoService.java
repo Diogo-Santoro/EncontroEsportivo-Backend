@@ -1,12 +1,15 @@
 package com.fiec.EncontroEsportivo.business.models.services;
 
 import com.fiec.EncontroEsportivo.business.models.entities.Evento;
+import com.fiec.EncontroEsportivo.business.models.entities.Lugar;
 import com.fiec.EncontroEsportivo.business.models.repositories.IEventoRepositorio;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @Slf4j
@@ -45,8 +48,10 @@ public class EventoService implements IEventoService{
     }
 
     @Override
-    public Page<Evento> getAllEventos(int page, int size) {
-        return eventoRepositorio.findAll(PageRequest.of(page, size));
+    public List<Evento> getEvento() {
+
+        return eventoRepositorio.findAll();
+
     }
 
 

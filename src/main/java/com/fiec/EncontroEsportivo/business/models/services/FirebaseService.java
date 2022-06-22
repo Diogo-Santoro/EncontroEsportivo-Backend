@@ -1,8 +1,6 @@
 package com.fiec.EncontroEsportivo.business.models.services;
 
 import com.fiec.EncontroEsportivo.business.models.dto.FirebaseAuthRequest;
-import com.fiec.EncontroEsportivo.business.models.dto.LoginRequest;
-import com.fiec.EncontroEsportivo.business.models.dto.RegisterRequest;
 import com.fiec.EncontroEsportivo.business.models.dto.FirebaseAuthResponse;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;

@@ -14,5 +14,5 @@ public interface IEventoService {
 
     void deletaEvento(String idEvento);
 
-    Page<Evento> getAllEventos(int page, int size);
+    List<Evento> getEvento();
 }
