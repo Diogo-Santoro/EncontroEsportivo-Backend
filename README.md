@@ -7,4 +7,4 @@ https://main.d1mwp5o7de1yk.amplifyapp.com
 
 
 # Database 
-![img](https://imgur.com/ZTDcytc)
+![img](https://i.imgur.com/ZTDcytc.png)
