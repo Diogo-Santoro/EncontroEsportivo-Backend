@@ -12,4 +12,4 @@ https://main.d1mwp5o7de1yk.amplifyapp.com
 
 
 # Logo
-![img](https://i.imgur.com/ZTDcytc.png)
+![img](https://i.imgur.com/KTSu7Eu.png)
