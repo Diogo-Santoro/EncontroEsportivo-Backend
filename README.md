@@ -5,6 +5,6 @@
 https://main.d1mwp5o7de1yk.amplifyapp.com
 
 
-[img]https://i.imgur.com/ZTDcytc.png[/img]
 
 # Database 
+![alt tag](https://imgur.com/ZTDcytc)
